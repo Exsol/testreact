@@ -8,19 +8,22 @@ import Myinput from "./components/UI/input/Myinput";
 import './styles/App.css'
 function App() {
  const [posts, setPosts] = useState( [
-
   {id:1,title:"title",body:'Description'},
   {id:2,title:"title",body:'Description 2'},
   {id:3,title:"title",body:'Description 3'},
   {id:4,title:"title",body:'Description 3'},
  ])
 
- const [title, setTitle] = useState("");
+
+ const [post, setPost] = useState({title:'',body:''});
 
 
-const addNewPost = (e) =>{
-  e.preventDefault();
-  console.log(title)
+
+
+const addNewPost = (e) => {
+        e.preventDefault();
+        setPosts([...posts, {...post,id:Date.now()}])
+        setPost({title:'',body:''})
 }
 
   return (
@@ -28,13 +31,18 @@ const addNewPost = (e) =>{
       <form>
 
         <Myinput 
-        value={title}
-        onChange={e=>setTitle(e.target.value)}
+        value={post.title}
+        onChange={e=>setPost({...post,title:e.target.value})}
         type="text"
         placeholder="Название поста"
         />
 
-        <Myinput type="text" placeholder="Описание поста"/>
+          <Myinput
+              value={post.body}
+              onChange={e=>setPost({...post,body:e.target.value})}
+              type="text"
+              placeholder="Описание поста поста"
+          />
 
         <Mybutton onClick={addNewPost}  >Добавить пост</Mybutton>
       </form>

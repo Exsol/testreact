@@ -1,12 +1,6 @@
 import { IsConstructor } from "es-abstract";
 import React from "react";
-
-
 class ClassCounter extends React.Component {
-
-
-
-
 
 constructor(props) {
     super(props);

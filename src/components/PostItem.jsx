@@ -4,6 +4,7 @@ const PostItem = (props) =>{
 return(
 <div className="post">
     <div className="post__content">
+      <strong>{props.nubmer}. </strong>
       <strong>{props.post.title}</strong>
       <div>
       {props.post.body}
